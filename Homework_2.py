@@ -34,5 +34,8 @@ sleep(2)
 driver.find_element(By.XPATH, "//button[@type='submit']")
 actual_result= driver.find_element(By.XPATH, "//*[text()='Sign into your Target account']").text
 expected_result = "Sign into your Target account"
-print(actual_result)
+if actual_result == expected_result:
+    print("Test passed")
+else:
+    print("Test failed")
 driver.quit()
