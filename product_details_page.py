@@ -15,7 +15,7 @@ def open_target(context, product_id):
 
 @then('Verify user can click through colors')
 def click_and_verify_colors(context):
-    expected_colors = ['dark khaki', 'grey', 'navy/tan', 'white/sand/tan', 'black/gum - Out of Stock', 'white/navy/red - Out of Stock']
+    expected_colors = ['Blue Tint', 'Denim Blue', 'Raven', 'Marine']
     actual_colors = []
 
     colors = context.driver.find_elements(*COLOR_OPTIONS)  # [webelement1, webelement2, webelement3]
