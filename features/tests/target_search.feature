@@ -1,0 +1,12 @@
+# Created by mbrar at 7/2/2025
+Feature: Tests for search
+
+  Scenario: User can search for a product
+    Given Open target main page
+    When Search for tea
+    Then Verify search results shown
+
+  Scenario: User can search for coffee
+    Given Open target main page
+#    When Search for coffe
+#    Then Verify search results shown for coffee
