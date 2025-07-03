@@ -30,3 +30,20 @@ def verify_cart_empty(context):
     expected_result = 'Your cart is empty'
     actual_result = context.driver.find_element(By.CSS_SELECTOR, "[data-test='boxEmptyMsg']").text
     assert expected_result == actual_result, f'Expected {expected_result} did not match actual {actual_result}'
+
+@when('Click Sign In')
+def click_sign_in(context):
+    context.driver.find_element(By.ID,"account-sign-in").click()
+    sleep(2)
+
+@then("From right side navigation menu, click Sign In")
+def nav_menu_signin(context):
+    context.driver.find_element(By.XPATH, "//button[@data-test='accountNav-signIn']").click()
+    sleep(2)
+
+@then("Verify Sign In form opened")
+def verify_signin_form(context):
+    expected_result = "Sign in or create account"
+    actual_result = context.driver.find_element(By.XPATH, "//*[text()='Sign in or create account']").text
+    assert expected_result in actual_result, f'Expected text {expected_result} not in actual {actual_result}'
+    print('Test case passed')
