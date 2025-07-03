@@ -18,5 +18,15 @@ def search_product(context):
 @then('Verify search results shown')
 def verify_search_results(context):
     expected_result = 'tea'
-    actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
+    actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='lp-resultsCount']").text
     assert expected_result in actual_result, f'Expected text {expected_result} not in actual {actual_result}'
+
+@when('Click on Cart icon')
+def click_cart(context):
+    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
+
+@then("Verify 'Your cart is empty' message is shown")
+def verify_cart_empty(context):
+    expected_result = 'Your cart is empty'
+    actual_result = context.driver.find_element(By.CSS_SELECTOR, "[data-test='boxEmptyMsg']").text
+    assert expected_result == actual_result, f'Expected {expected_result} did not match actual {actual_result}'
