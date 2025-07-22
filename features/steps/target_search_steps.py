@@ -47,3 +47,17 @@ def verify_signin_form(context):
     actual_result = context.driver.find_element(By.XPATH, "//*[text()='Sign in or create account']").text
     assert expected_result in actual_result, f'Expected text {expected_result} not in actual {actual_result}'
     print('Test case passed')
+
+SEARCH_FIELD = (By.ID, 'search')
+SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
+@when('Search for {product}')
+def search_product(context, product):
+    context.driver.find_element(*SEARCH_FIELD).send_keys(product)
+    context.driver.find_element(*SEARCH_BTN).click()
+    sleep(10)
+
+@then('Verify search results shown for {product}')
+def verify_search_results(context, product):
+    actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
+    assert product in actual_result, f'Expected text {product} not in actual {actual_result}'
+

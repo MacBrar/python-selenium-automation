@@ -16,3 +16,13 @@ Feature: Tests for search
     When Click Sign In
     Then From right side navigation menu, click Sign In
     Then Verify Sign In form opened
+
+  Scenario Outline: User can search for a product
+    Given Open target main page
+    When Search for <product>
+    Then Verify search results shown for <product>
+    Examples:
+    |product    |
+    |coffee     |
+    |tea        |
+    |mug        |
