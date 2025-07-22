@@ -1,21 +1,20 @@
 # Created by mbrar at 7/2/2025
 Feature: Tests for search
 
-  Scenario: User can search for a product
+  Scenario: User can search for tea
     Given Open target main page
     When Search for tea
-    Then Verify search results shown
+    Then Verify search results shown for tea
 
-  Scenario: 'Your cart is empty' message is shown for empty cart
+  Scenario: User can search for coffee
     Given Open target main page
-    When Click on Cart icon
-    Then Verify 'Your cart is empty' message is shown
+    When Search for coffee
+    Then Verify search results shown for coffee
 
-  Scenario: Verify that a logged out user can navigate to Sign In
+  Scenario: User can search for a mug
     Given Open target main page
-    When Click Sign In
-    Then From right side navigation menu, click Sign In
-    Then Verify Sign In form opened
+    When Search for a mug
+    Then Verify search results shown for a mug
 
   Scenario Outline: User can search for a product
     Given Open target main page
@@ -26,3 +25,8 @@ Feature: Tests for search
     |coffee     |
     |tea        |
     |mug        |
+
+  Scenario: Verify that user can see product names and images
+    Given Open target main page
+    When Search for AirPods (3rd Generation)
+    Then Verify that every product has a name and an image
